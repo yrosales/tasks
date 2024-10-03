@@ -1,0 +1,51 @@
+<div class="container card mb-2 py-4">
+  <div class="card-body">
+    <h3 class="card-title">Crear nueva tarea</h3>
+    <form [formGroup]="form">
+      <div class="mb-2 form-group input-group-lg">
+        <label for="description">Nombre de la tarea</label>
+        <input class="form-control" type="text" id="description" formControlName="description">
+        <label for="deadline">Fecha límite</label>
+        <input class="form-control" type="date" id="deadline" formControlName="deadline">
+      </div>
+      <ng-container formArrayName="asociatedPersons">
+        <ng-container *ngFor="let personForm of persons.controls; let i = index">
+          <div class="container card mb-2 py-4" [formGroup]="form">
+            <h5 class="card-title">Personas asociadas:</h5>
+            <div class="mb-2 d-flex flex-row justify-content-start align-items-center form-group input-group-lg">
+              <div class="separate-right"><label for="name">Nombre</label>
+                <input class="form-control" type="text" id="name" formControlName="name">
+              </div>
+              <div class="ml-2"><label for="age">Edad</label>
+                <input class="form-control" type="text" id="age" formControlName="age">
+              </div>
+            </div>
+            <ng-container formArrayName="skills">
+              <ng-container *ngFor="let skillForm of skills.controls; let i = index">
+                <ng-container *ngIf="i<1"><p>Habilidades:</p></ng-container>
+                <div class="mb-2 d-flex flex-row justify-content-start align-items-center" [formGroup]="form">
+                  <div class="separate-right"><input class="form-control" type="text" id="skill" formControlName="skill"></div>
+                  <button class="btn btn-danger btn-block" (click)="addPerson()">
+                    Eliminar
+                  </button>
+                </div>
+              </ng-container>
+            </ng-container>
+            <div class="d-flex flex-row justify-content-end align-items-center">
+              <button class="btn btn-primary btn-block separate-right" (click)="addSkill()">
+                Añadir habilidad
+              </button>
+              <button class="btn btn-danger btn-block" (click)="addPerson()">
+                Eliminar Persona
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <button class="btn btn-primary btn-block" (click)="addPerson()">
+        Añadir Persona
+      </button>
+
+    </form>
+  </div>
+</div>

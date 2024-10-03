@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<div *ngFor="let task of taskList">
+    <ol>
+        <li>
+            <h2>
+                <span>[{{task.status}}] </span>
+                <span>{{task.description}} </span>
+                <span>{{task.deadline | date:'shortDate'}}</span>
+            </h2>
+        </li>
+        <ul>
+            <li>Personas Asociadas:</li>
+            <li *ngFor="let person of task.asociatedPersons">
+                <p>
+                    <span>{{person.name}} </span>
+                    <span>({{person.age}})</span>
+                </p>
+                <ul>
+                    <li >
+                        Habilidades:
+                    </li>
+                    <li style="display: inline;" *ngFor="let skill of person.skills">{{skill}}, 
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </ol>
