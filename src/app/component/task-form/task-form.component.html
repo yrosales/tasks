@@ -9,7 +9,7 @@
         <input class="form-control" type="date" id="deadline" formControlName="deadline">
       </div>
       <ng-container formArrayName="asociatedPersons">
-        <ng-container *ngFor="let personForm of persons.controls; let i = index">
+        <ng-container *ngFor="let personForm of persons.controls; let pi = index">
           <div class="container card mb-2 py-4" [formGroup]="form">
             <h5 class="card-title">Personas asociadas:</h5>
             <div class="mb-2 d-flex flex-row justify-content-start align-items-center form-group input-group-lg">
@@ -21,10 +21,13 @@
               </div>
             </div>
             <ng-container formArrayName="skills">
-              <ng-container *ngFor="let skillForm of skills.controls; let i = index">
-                <ng-container *ngIf="i<1"><p>Habilidades:</p></ng-container>
+              <ng-container *ngFor="let skillForm of skills.controls; let ki = index">
+                <ng-container *ngIf="ki<1">
+                  <p>Habilidades:</p>
+                </ng-container>
                 <div class="mb-2 d-flex flex-row justify-content-start align-items-center" [formGroup]="form">
-                  <div class="separate-right"><input class="form-control" type="text" id="skill" formControlName="skill"></div>
+                  <div class="separate-right"><input class="form-control" type="text" id="skill"
+                      formControlName="skill"></div>
                   <button class="btn btn-danger btn-block" (click)="addPerson()">
                     Eliminar
                   </button>
@@ -32,10 +35,10 @@
               </ng-container>
             </ng-container>
             <div class="d-flex flex-row justify-content-end align-items-center">
-              <button class="btn btn-primary btn-block separate-right" (click)="addSkill()">
+              <button class="btn btn-primary btn-block separate-right" (click)="addSkill(pi)">
                 Añadir habilidad
               </button>
-              <button class="btn btn-danger btn-block" (click)="addPerson()">
+              <button class="btn btn-danger btn-block" (click)="deletePerson(pi)">
                 Eliminar Persona
               </button>
             </div>

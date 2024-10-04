@@ -16,17 +16,9 @@ export class TaskFormComponent implements OnInit {
     asociatedPersons: this.formBuilder.array([])
   });
 
-  public personForm: FormGroup = this.formBuilder.group({
-    name: ['', Validators.required],
-    age: ['', Validators.required],
-    skills: this.formBuilder.array([])
-  });
+  personIndex!: number;
 
-  public skillForm = this.formBuilder.group({
-    description: ['', Validators.required]
-  });
-
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -37,17 +29,29 @@ export class TaskFormComponent implements OnInit {
   }
 
   addPerson() {
-    console.log('añadiendo persona')
-    this.persons.push(this.personForm);
-    console.log(this.form);
+    const personForm: FormGroup = this.formBuilder.group({
+      name: ['', Validators.required],
+      age: ['', Validators.required],
+      skills: this.formBuilder.array([])
+    });
+    this.persons.push(personForm);
+  }
+
+  deletePerson(personIndex: number) {
+    this.persons.removeAt(personIndex);
   }
 
   get skills() {
-    return this.personForm.controls['skills'] as FormArray
+    const selectPersonForm: FormGroup = this.persons.at(this.personIndex) as FormGroup
+    return selectPersonForm.controls['skills'] as FormArray;
   }
 
-  addSkill() {
-    this.skills.push(this.skillForm);
+  addSkill(personIndex: number) {
+    this.personIndex = personIndex;
+    const skillForm = this.formBuilder.group({
+      description: ['', Validators.required]
+    });
+    this.skills.push(skillForm);
   }
 
 }
