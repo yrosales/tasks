@@ -1,31 +1,37 @@
 <div class="container card mb-2 py-4">
     <h3 class="card-title">{{title}}</h3>
-    <div *ngFor="let task of taskList">
-        <ol>
-            <li>
-                <h5>
-                    <span>[{{task.status}}] </span>
-                    <span>{{task.description}} </span>
-                    <span>{{task.deadline | date:'shortDate'}}</span>
-                </h5>
+    <div>
+        <ol *ngFor="let task of taskList" class="list-group">
+            <li class="list-group-item">
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                    <h5>
+                        <span>[{{task.status}}] </span>
+                        <span>{{task.description}} </span>
+                        <span>{{task.deadline | date:'shortDate'}}</span>
+                    </h5>
+                    <button class="btn btn-primary btn-block" (click)="cancelTask()">
+                        Completada
+                    </button>
+                </div>
             </li>
-            <ul class="list-group">
-                <li>Personas Asociadas:</li>
-                <li class="list-group-item" *ngFor="let person of task.asociatedPersons">
-                    <p>
-                        <span>{{person.name}} </span>
-                        <span>({{person.age}})</span>
-                    </p>
-                    <ul>
-                        <li>
-                            Habilidades:
-                        </li>
-                        <li class="list-group-item" style="display: inline;" *ngFor="let skill of person.skills">
-                            {{skill}}
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            <li class="list-group-item">
+                <ul>Personas Asociadas:
+                    <li *ngFor="let person of task.asociatedPersons">
+                        <p>
+                            <span>{{person.name}} </span>
+                            <span>({{person.age}})</span>
+                        </p>
+                        <ul>
+                            <li>
+                                Habilidades:
+                            </li>
+                            <li class="list-group-item" style="display: inline;" *ngFor="let skill of person.skills">
+                                {{skill}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
         </ol>
     </div>
 </div>

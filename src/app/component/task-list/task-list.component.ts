@@ -12,4 +12,8 @@ export class TaskListComponent {
 
   public title: string = 'Lista de Tareas';
 
+  cancelTask(){
+    
+  }
+
 }

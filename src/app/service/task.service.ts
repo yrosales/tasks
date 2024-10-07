@@ -15,4 +15,14 @@ export class TaskService {
   getTasks(): Observable<Task[]> {
     return this.tasks.asObservable();
   }
+
+  saveTask(body:Task){
+    throw new Error('Function not implemented.');
+  }
+
+  finishTask(body:Task){
+    throw new Error('Function not implemented.');
+  }
+
 }
+

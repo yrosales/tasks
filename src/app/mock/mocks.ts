@@ -4,49 +4,49 @@ export class Mocks {
     public static persons : Person[] = [
         {
             age : 20,
-            name: 'Person One',
-            skills:['skillone', 'skilltwo']
+            name: 'Juan Pérez',
+            skills:['Java Script', 'Angular']
         },
         {
             age : 22,
-            name: 'Person two',
-            skills:['skillone', 'skilltwo']
+            name: 'Maria López',
+            skills:['Typescript', 'CSS']
         },
         {
             age : 21,
-            name: 'Person three',
-            skills:['skillone']
+            name: 'Jorge Gómez',
+            skills:['HTML']
         },
         {
             age : 25,
-            name: 'Person four',
-            skills:['skillone', 'skilltwo', 'skillthree']
+            name: 'Martin Suares',
+            skills:['Javascript', 'CSS', 'HTML']
         },
         {
             age : 23,
-            name: 'Person five',
-            skills:['skillone', 'skilltwo']
+            name: 'Edgar Rosales',
+            skills:['HTML']
         }
     ]
 
     public static tasks : Task[] = [
         {
             id: 1,
-            description: 'Task one',
+            description: 'Tarea A',
             status: "pending",
             deadline: new Date(),
             asociatedPersons:[this.persons[0]]
         },
         {
             id: 1,
-            description: 'Task two',
+            description: 'Tarea B',
             status: "pending",
             deadline: new Date(),
             asociatedPersons:[this.persons[1],this.persons[2]]
         },
         {
             id: 1,
-            description: 'Task three',
+            description: 'Tarea C',
             status: "pending",
             deadline: new Date(),
             asociatedPersons:[this.persons[3]]
